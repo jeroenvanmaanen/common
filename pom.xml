@@ -24,10 +24,10 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/jeroenvanmaanen/common.git</connection>
-        <developerConnection>scm:git:https://github.com/jeroenvanmaanen/common.git</developerConnection>
+        <url>https://github.com/jeroenvanmaanen/common.git</url>
+        <connection>scm:git:git://github.com/jeroenvanmaanen/common.git</connection>
+        <developerConnection>scm:git:git@github.com:jeroenvanmaanen/common.git</developerConnection>
         <tag>HEAD</tag>
-        <url>https://github.com/jeroenvanmaanen/common</url>
     </scm>
 
     <developers>
