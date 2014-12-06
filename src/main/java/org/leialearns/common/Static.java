@@ -91,17 +91,17 @@ public class Static {
      * @param <T> The base type of the array
      * @return The extended array
      */
-    public static <T> T[] offer(T[] prepend, T[] tail) {
+    public static <T> T[] offerArray(T[] prepend, T[] tail) {
         if (prepend == null || prepend.length < 1) {
             return tail;
-        }
-        if (tail == null || tail.length < 1) {
+        } else if (tail == null || tail.length < 1) {
             return prepend;
+        } else {
+            T[] result = newArrayInstance(tail, prepend.length + tail.length);
+            System.arraycopy(prepend, 0, result, 0, prepend.length);
+            System.arraycopy(tail, 0, result, prepend.length, tail.length);
+            return result;
         }
-        T[] result = newArrayInstance(tail, prepend.length + tail.length);
-        System.arraycopy(prepend, 0, result, 0, prepend.length);
-        System.arraycopy(tail, 0, result, prepend.length, tail.length);
-        return result;
     }
 
     /**
@@ -113,7 +113,19 @@ public class Static {
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] newArrayInstance(T[] template, int length) {
-        return (T[]) Array.newInstance(template.getClass().getComponentType(), length);
+        return newArrayInstance((Class<T>) template.getClass().getComponentType(), length);
+    }
+
+    /**
+     * Creates a new array instance in a type safe way.
+     * @param baseClass The type of the elements of the array
+     * @param length The length of the new array
+     * @param <T> The base type of the new array
+     * @return The new array
+     */
+    @SuppressWarnings("unchecked")
+    public static <T> T[] newArrayInstance(Class<T> baseClass, int length) {
+        return (T[]) Array.newInstance(baseClass, length);
     }
 
     /**
