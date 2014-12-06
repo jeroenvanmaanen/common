@@ -34,7 +34,7 @@ public class TypedIterableTest {
     public void testCastingTypedIterable() {
         Collection<Object> integers = Arrays.asList(37, 42);
         TypedIterable<Integer> typedIterable = new TypedIterable<>(Integer.class, integers);
-        assertSame(integers, typedIterable.getWrappedIterable());
+        assertSame(integers, ((HasWrappedIterable) typedIterable).getWrappedIterable());
         Iterator<Integer> iterator = typedIterable.iterator();
         assertEquals(Integer.valueOf(37), iterator.next());
         assertEquals(Integer.valueOf(42), iterator.next());
