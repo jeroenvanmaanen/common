@@ -23,6 +23,13 @@ public class DisplayTest {
     }
 
     @Test
+    public void testLiteral() {
+        String part = "[ ]";
+        String display = Display.displayParts(part, L.literal(part));
+        assertEquals("[\\[_\\]|[ ]]", display);
+    }
+
+    @Test
     public void testAsDisplay() {
         Value value = new Value();
         Object display = Display.asDisplay(value);
